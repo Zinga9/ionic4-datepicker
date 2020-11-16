@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NavParams, ModalController, IonContent } from '@ionic/angular';
 
-import * as moment_ from 'moment';
+import * as moment_ from 'moment-timezone';
 import { Ionic4DatepickerService } from '../ionic4-datepicker.service';
 const moment = moment_;
 
@@ -99,7 +99,7 @@ export class Ionic4DatepickerModalComponent implements OnInit, OnDestroy {
   // Virtual scroll create for select year and month
   selectMonthYear(isMonthSelect) {
     // console.log('selectMonthYear', i);
-    this.isMonthYearSelectorOpen = true;
+    this.isMonthYearSelectorOpen = false;
 
     this.isMonthSelect = isMonthSelect;
     this.scrollingMonthOrYearArray = isMonthSelect ? this.mainObj.monthsList : this.yearsList;
@@ -448,7 +448,7 @@ export class Ionic4DatepickerModalComponent implements OnInit, OnDestroy {
     objConfig.weeksList = config.weeksList ? config.weeksList : this.weeksList;
     objConfig.weeksList = [...objConfig.weeksList];
 
-    objConfig.dateFormat = config.dateFormat ? config.dateFormat : 'DD MMM YYYY';
+    objConfig.dateFormat = config.dateFormat ? config.dateFormat : 'l';
     // console.log(this.selectedDate.date, objConfig.dateFormat, moment.locale());
 
     objConfig.clearButton = config.clearButton ? config.clearButton : false;
